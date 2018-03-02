@@ -5,7 +5,7 @@ const Sidebar = props => {
     <section className="page-sidebar">
       <ul>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/">Planets</Link></li>
+        <li><Link to="/planets">Planets</Link></li>
       </ul>
     </section>
   );

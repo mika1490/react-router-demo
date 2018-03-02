@@ -1,14 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PlanetsList = props => {
   return(
   <div className="planets-list">
     {
       props.planets.map(planet => {
+        //planet.id ignore the bottom code
         const planetId = planet.url.split('/').slice(-2, -1).pop();
         return(
           <div key={planetId} className="planet-link">
-            {planet.name}
+          <Link to={`/planets/${planetId}`}>{planet.name}</Link>
           </div>
         );
       })
