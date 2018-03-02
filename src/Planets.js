@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 import PlanetsList from './PlanetsList';
 import Planet from './Planet';
+import NoMatch from './NoMatch';
 
 class Planets extends Component {
   constructor(props) {
@@ -21,7 +23,7 @@ class Planets extends Component {
         return json.results
       })
       .then(planets => {
-        this.setState({ planets: planets});
+        this.setState({ planets: planets });
       })
       .catch(err => {
         console.log(err);
@@ -29,8 +31,14 @@ class Planets extends Component {
   }
 
   render() {
-    return(
-      <PlanetsList planets={this.state.planets} />
+    return (
+      <Switch>
+        <Route exact path="/planets" render={() => 
+        <PlanetsList planets={this.state.planets} />
+        } />
+        <Route exact path="/planets/:id" component={Planet} />
+        <Route component={NoMatch}/>
+      </Switch>
     );
   }
 }
